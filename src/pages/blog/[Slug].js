@@ -18,6 +18,32 @@ export default function BlogPost({ frontmatter, Slug, content, posts }) {
     return (
         <>
             <Head>
+                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+                <meta name="viewport" content="width=device-width,initial-scale=1" />
+                <meta name="title" content={frontmatter.title} />
+                <meta name="description" content={frontmatter.desc} />
+                <meta name="author" content="Nilesh Darji" />
+                <meta name="keywords" content={`Nilesh blog,nilesh darji,blog,${frontmatter.keyword.map((item) => { return `${item},` })}`} />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`https://nileshblogs.vercel.app/blog/${frontmatter.slug}/`} />
+                <meta property="og:title" content={frontmatter.title} />
+                <meta property="og:description" content={frontmatter.desc} />
+                <meta property="og:image" content={`https://nileshblogs.vercel.app/images/${frontmatter.cover_image}/`} />
+
+                <meta property="twitter:card" content="summary" />
+                <meta property="twitter:url" content={`https://nileshblogs.vercel.app/blog/${frontmatter.slug}/`} />
+                <meta property="twitter:title" content={frontmatter.title} />
+                <meta property="twitter:description" content={frontmatter.desc} />
+                <meta property="twitter:image" content={`https://nileshblogs.vercel.app/images/${frontmatter.cover_image}/`} />
+                <meta name="robots" content="index, follow" />
+
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="manifest" href="/site.webmanifest" />
+                <meta name="msapplication-TileColor" content="#da532c" />
+                <meta name="theme-color" content="#ffffff" />
                 <title>{frontmatter.title}</title>
             </Head>
             <article class="px-4 md:py-24 py-10 mx-auto max-w-7xl" itemscope itemtype="http://schema.org/BlogPosting">

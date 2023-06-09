@@ -11,6 +11,31 @@ export default function Home({ posts }) {
   return (
     <>
       <Head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="title" content="Nilesh's Blog" />
+        <meta name="description" content="This is my personal blogging website.Here you can find my latest blogs and articles which I will publish here." />
+        <meta name="author" content="Nilesh Darji" />
+        <meta name="keywords" content="Nilesh blog,nilesh darji,nilesh darji portfolio,nilesh,ddu,next js,blog, blog app" />
+        <link rel="canonical" href="https://nileshblogs.vercel.app/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nileshblogs.vercel.app/" />
+        <meta property="og:title" content="nilesh blog" />
+        <meta property="og:description" content="This is my personal blogging website.Here you can find my latest blogs and articles which I will publish here." />
+        <meta property="og:image" content="https://nileshblogs.vercel.app/logo.png" />
+        <meta name="google-site-verification" content="xy1FyOILRbps4rSWe35dSmQ7AKIUFfrHPQTinrwfEUw" />
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content="https://nileshblogs.vercel.app/" />
+        <meta property="twitter:title" content="nilesh blog" />
+        <meta property="twitter:description" content="This is my personal blogging website.Here you can find my latest blogs and articles which I will publish here." />
+        <meta property="twitter:image" content="https://nileshblogs.vercel.app/logo.jpg" />
+        <meta name="robots" content="index, follow" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
         <title>Nilesh Blog</title>
       </Head>
       <main className='p-3 md:p-6'>
