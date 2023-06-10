@@ -46,8 +46,8 @@ export default function Home({ posts }) {
             return (
               <div key={index} className=' rounded-md shadow-lg border  dark:border-neutral-700 border-gray-300 p-3 bg-neutral-200 dark:bg-neutral-900'>
 
-                <div className="relative group card">
-                  <img src={blog.frontmatter.cover_image} alt={blog.frontmatter.title} loading="eager" className='aspect-video transition-all duration-300  rounded-md bg-contain group-hover:blur-sm' />
+                <div className="relative group">
+                  <img src={blog.frontmatter.cover_image} alt={blog.frontmatter.title} loading="eager" className='aspect-video transition-all duration-300  rounded-md bg-contain group-hover:blur-[2px]' />
                   <Link href={`/blog/${blog.slug}/`} className="group-hover:opacity-100 group-hover:scale-110 opacity-0 w-full h-full flex justify-center items-center transition-all duration-300 absolute top-0 right-0">
                     <AiOutlineLink className="text-3xl text-white" />
                   </Link>
