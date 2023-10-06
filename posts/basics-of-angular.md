@@ -15,11 +15,11 @@ keyword:
 
 Let's start by creating an Angular project
 1. first install angular cli
-```
+```bash
 npm i -g @angular/cli
 ```
 2. now create a project using ng command
-```
+```bash
 ng new project-name
 ```
 ---
