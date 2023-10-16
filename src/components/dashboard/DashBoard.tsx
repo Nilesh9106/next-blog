@@ -18,7 +18,6 @@ const TableRow = ({ blog, onDelete }: { blog: IBlog, onDelete: () => void }) => 
                     error: "Error Deleting Blog"
                 });
                 onDelete();
-                alert("Blog deleted")
             } catch (error) {
                 console.log(error);
             }

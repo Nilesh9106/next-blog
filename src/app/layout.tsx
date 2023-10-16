@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import Footer from '@/components/Footer'
 import NextTopLoader from 'nextjs-toploader'
+import { Slide, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +19,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class">
-
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            transition={Slide}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover={false}
+            theme="colored"
+          />
           <div className='bg-white text-black dark:bg-neutral-950 dark:text-gray-100 min-h-screen'>
             <NextTopLoader
               color="#6d28d9"
