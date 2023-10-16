@@ -20,28 +20,29 @@ import "prismjs/plugins/line-numbers/prism-line-numbers"
 import "prismjs/plugins/toolbar/prism-toolbar"
 import "prismjs/plugins/toolbar/prism-toolbar.css"
 import "prismjs/plugins/show-language/prism-show-language"
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard"
+
 import { getBlog } from "@/services/blogService";
 import Loading from "./Loading";
 
 export default function BlogPage({ slug }: { slug: string }) {
     const [blog, setBlog] = useState<IBlog | null>(null);
 
-    useEffect(() => {
-        setTimeout(() => {
-            let codes = document.querySelectorAll("pre > code");
-            for (let i = 0; i < codes.length; i++) {
-                const element = codes[i];
-                element.classList.add('line-numbers')
-            }
-            Prism.highlightAll();
-        }, 500);
-    }, [blog]);
+
 
     useEffect(() => {
         (async () => {
             try {
                 let blog = await getBlog(slug);
                 setBlog(blog);
+                setTimeout(() => {
+                    let codes = document.querySelectorAll("pre > code");
+                    for (let i = 0; i < codes.length; i++) {
+                        const element = codes[i];
+                        element.classList.add('line-numbers')
+                    }
+                    Prism.highlightAll();
+                }, 500);
             } catch (error) {
                 console.log(error);
             }

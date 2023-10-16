@@ -8,11 +8,15 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+::selection {
+    background-color: rgb(127, 73, 255);
+    color: #fff;
+}
 
 ::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
-    margin: 2px;
+    width: 4px;
+    height: 4px;
+    margin: 4px;
 }
 
 ::-webkit-scrollbar-track {
