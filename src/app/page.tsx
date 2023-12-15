@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     initialScale: 1,
     maximumScale: 1,
   },
+  other: {
+    "google-site-verification": "xy1FyOILRbps4rSWe35dSmQ7AKIUFfrHPQTinrwfEUw"
+  },
 
   openGraph: {
     title: "Nilesh's Blog - Daily Insights and Articles by Nilesh Darji",

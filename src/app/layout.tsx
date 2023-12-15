@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import NextTopLoader from 'nextjs-toploader'
 import { Slide, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,6 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <meta name="google-site-verification" content="xy1FyOILRbps4rSWe35dSmQ7AKIUFfrHPQTinrwfEUw" />
+      </Head>
       <body className={inter.className}>
         <ThemeProvider attribute="class">
           <ToastContainer
