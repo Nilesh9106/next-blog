@@ -1,56 +1,27 @@
-"use server"
-import Blog, { IBlog } from "@/models/Blog";
-import connectDB from "@/models/connect";
-import { Query } from "mongoose";
+import { BlogForm } from "@/types/form";
+import { BlogType, BlogTypeWithComments } from "@/types/models";
+import { errorHandler } from "@/utils/handlers";
+import axios from "axios";
 
-export async function getBlogs() {
-    await connectDB();
-    let blogs = await Blog.find({}).sort({ createdAt: -1 }) as IBlog[];
-    return JSON.parse(JSON.stringify(blogs));
-}
-
-export async function getBlog(slug: string) {
-    await connectDB();
-    let blog = await Blog.findOne({ slug: slug });
-    // convert to JSON to remove the _id and __v fields
-    return JSON.parse(JSON.stringify(blog));
-}
-
-export async function addBlog(blog: IBlog) {
-    await connectDB();
-    let res = await Blog.create({
-        title: blog.title,
-        description: blog.description,
-        content: blog.content,
-        image: blog.image,
-        slug: blog.slug,
-        likedBy: blog.likedBy,
-        keywords: blog.keywords,
-        comments: blog.comments,
-    });
-    console.log(res);
-    return JSON.parse(JSON.stringify(res));
-}
-
-export async function updateBlog(blog: IBlog) {
-    await connectDB();
-    let res = await Blog.updateOne({ slug: blog.slug }, {
-        title: blog.title,
-        description: blog.description,
-        content: blog.content,
-        image: blog.image,
-        slug: blog.slug,
-        likedBy: blog.likedBy,
-        keywords: blog.keywords,
-        comments: blog.comments,
-    });
-    console.log(res);
-    return JSON.parse(JSON.stringify(res));
-}
-
-export async function deleteBlog(slug: string) {
-    await connectDB();
-    let res = await Blog.deleteOne({ slug: slug });
-    console.log(res);
-    return JSON.parse(JSON.stringify(res));
+export class BlogService {
+  static getBlogs = errorHandler(async () => {
+    const res = await axios.get("/api/blogs");
+    return res.data.blogs as BlogType[];
+  });
+  static getBlogBySlug = errorHandler(async (slug: string) => {
+    const res = await axios.get(`/api/blogs/${slug}`);
+    return res.data.blog as BlogTypeWithComments;
+  });
+  static addBlog = errorHandler(async (blog: BlogForm) => {
+    const res = await axios.post("/api/blogs", blog);
+    return res.data.blog as BlogType;
+  });
+  static updateBlog = errorHandler(async (slug: string, blog: BlogForm) => {
+    const res = await axios.put(`/api/blogs/${slug}`, blog);
+    return res.data.blog as BlogType;
+  });
+  static deleteBlog = errorHandler(async (slug: string) => {
+    const res = await axios.delete(`/api/blogs/${slug}`);
+    return res.data.message as string;
+  });
 }

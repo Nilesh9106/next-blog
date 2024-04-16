@@ -1,23 +1,18 @@
-"use client"
+"use client";
 import Loading from "@/components/Loading";
 import AddBlog from "@/components/dashboard/AddBlog";
 import { IBlog } from "@/models/Blog";
-import { getBlog } from "@/services/blogService";
-import { useEffect, useState } from "react"
+import { BlogService } from "@/services/blogService";
+import { BlogTypeWithComments } from "@/types/models";
+import { useEffect, useState } from "react";
 
 export default function Page({ params }: { params: { slug: string } }) {
-  const [blog, setBlog] = useState<IBlog | null>(null);
+  const [blog, setBlog] = useState<BlogTypeWithComments>();
   useEffect(() => {
-    getBlog(params.slug).then((blog) => {
+    BlogService.getBlogBySlug(params.slug).then((blog) => {
       setBlog(blog);
     });
   }, []);
 
-  return (
-    <>
-      {blog === null ? <Loading /> :
-        <AddBlog editBlog={blog} />
-      }
-    </>
-  )
+  return <>{!blog ? <Loading /> : <AddBlog editBlog={blog} />}</>;
 }
