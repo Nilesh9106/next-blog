@@ -21,17 +21,11 @@ export const generateMetadata = async ({
     referrer: "origin-when-cross-origin",
     keywords: ["Nilesh", "Nilesh's Blog", ...blog.keywords],
     authors: [{ name: "Nilesh darji" }],
-    colorScheme: "dark",
     creator: "Nilesh darji",
     manifest: "/site.webmanifest",
     robots: {
       index: true,
       follow: true,
-    },
-    viewport: {
-      width: "device-width",
-      initialScale: 1,
-      maximumScale: 1,
     },
 
     openGraph: {

@@ -69,27 +69,22 @@ const TableRow = ({
 
 export default function DashBoard() {
   const [blogs, setBlogs] = useState<BlogType[]>();
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchBlogs = async () => {
+    setLoading(true);
+    const data = await BlogService.getBlogs();
+    setBlogs(data ?? []);
+    setLoading(false);
+  };
 
   useEffect(() => {
-    if (
-      localStorage.getItem("token") ===
-      (process.env.NEXT_PUBLIC_PASSWORD as string)
-    ) {
-      setIsAuthenticated(true);
-      BlogService.getBlogs().then((blogs) => {
-        setBlogs(blogs ?? []);
-      });
-    } else {
-      redirect("admin/auth");
-    }
+    fetchBlogs();
   }, []);
-  return isAuthenticated == null ? (
-    <Loading />
-  ) : (
+  return (
     <>
       <div className="sm:w-2/3 max-sm:w-full mx-auto flex flex-col px-2 sm:px-8 py-4">
-        {!blogs ? (
+        {!blogs || loading ? (
           <Loading />
         ) : (
           <div className="overflow-x-auto">

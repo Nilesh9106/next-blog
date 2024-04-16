@@ -95,7 +95,7 @@ export default function BlogPage({ slug }: { slug: string }) {
 
           {blog?.content && (
             <div
-              className="max-w-full mx-auto  lg:max-w-3xl md:max-w-2xl sm:max-w-xl prose sm:prose-sm md:prose-lg lg:prose-xl   prose-pre:!bg-zinc-900   prose-violet prose-pre:shadow-lg dark:prose-invert"
+              className="max-w-full mx-auto  lg:max-w-3xl md:max-w-2xl sm:max-w-xl prose sm:prose-sm md:prose-lg lg:prose-xl   prose-pre:!bg-zinc-900   prose-emerald prose-pre:shadow-lg dark:prose-invert"
               dangerouslySetInnerHTML={{ __html: blog.content }}
             ></div>
           )}

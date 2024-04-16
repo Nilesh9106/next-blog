@@ -1,16 +1,17 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { SiGithub, SiTwitter } from "react-icons/si";
-import { TfiWorld } from "react-icons/tfi";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import useAuth from "@/hooks/useAuth";
+import { GrUserAdmin } from "react-icons/gr";
+import { toast } from "react-toastify";
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const { user, signOut } = useAuth();
   const path = usePathname();
   useEffect(() => {
     setMounted(true);
@@ -57,8 +58,30 @@ export default function Navbar() {
             <span className="text-2xl">{"NILESH'S BLOG"}</span>
           </div>
         </Link>
-        <div className="absolute right-4 flex gap-3">
+        <div className="absolute right-4 flex gap-4 items-center">
           {renderThemeChanger()}
+          {user && user.isAdmin ? (
+            <Link href={"/admin"}>
+              <GrUserAdmin className="text-2xl" />
+            </Link>
+          ) : null}
+          {user ? (
+            <button
+              className="btn"
+              onClick={async () => {
+                await toast.promise(signOut(), {
+                  success: "Logged out successfully",
+                  pending: "Logging out...",
+                });
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link className="btn" href={"/auth"}>
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </>

@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       const token = await createToken(payload);
       cookies().set("token", token, { maxAge: 30 * 24 * 60 * 60 });
       return NextResponse.json(
-        { token, user: newUser, message: "User created." },
+        { token, user: payload, message: "User created." },
         { status: HttpStatusCode.Created }
       );
     } else {

@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
           return NextResponse.json(
             {
               message: "Login Success",
-              user: user,
+              user: payload,
               token,
             },
             { status: HttpStatusCode.Ok }

@@ -29,7 +29,7 @@ export default function BlogCard({ blog }: { blog: BlogType }) {
           return (
             <span
               key={index}
-              className="rounded-3xl bg-violet-300 text-black border dark:border-gray-700 border-gray-300 py-0.5 px-3  transition-all duration-300 hover:scale-90 shadow-lg "
+              className="rounded-3xl bg-emerald-400 text-black  py-0.5 px-3  transition-all duration-300 hover:scale-90 shadow-lg "
             >
               {tech}
             </span>
