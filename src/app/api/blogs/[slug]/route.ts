@@ -29,7 +29,12 @@ export const GET = async (
     );
   }
   await connectDB();
-  let blog = await Blog.findOne({ slug: slug }).populate("comments likedBy");
+  let blog = await Blog.findOne({ slug: slug }).populate({
+    path: "comments",
+    populate: {
+      path: "user",
+    },
+  });
   if (!blog) {
     return NextResponse.json(
       { message: "Blog not found" },

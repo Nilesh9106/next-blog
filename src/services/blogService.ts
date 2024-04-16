@@ -24,4 +24,16 @@ export class BlogService {
     const res = await axios.delete(`/api/blogs/${slug}`);
     return res.data.message as string;
   });
+  static likeBlog = errorHandler(async (slug: string) => {
+    const res = await axios.get(`/api/blogs/${slug}/like`);
+    return res.data.blog as BlogType;
+  });
+  static unlikeBlog = errorHandler(async (slug: string) => {
+    const res = await axios.get(`/api/blogs/${slug}/unlike`);
+    return res.data.blog as BlogType;
+  });
+  static commentOnBlog = errorHandler(async (slug: string, content: string) => {
+    const res = await axios.post(`/api/blogs/${slug}/comment`, { content });
+    return res.data.blog as BlogTypeWithComments;
+  });
 }
